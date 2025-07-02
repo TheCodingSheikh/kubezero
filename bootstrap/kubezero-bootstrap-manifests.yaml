@@ -10,19 +10,16 @@ metadata:
   name: argo-cd
   namespace: kubezero
 spec:
-  repo: https://charts.bitnami.com/bitnami
+  repo: https://argoproj.github.io/argo-helm
   chart: argo-cd
-  version: 9.0.0
+  version: 7.8.28
   targetnamespace: kubezero
   valuesContent: |
-    server:
-      insecure: true
-      extraArgs:
-        - --disable-auth
-      ingress:
-        enabled: true
-        hostname: 'gitops.local.kubezero.io'
-      config:
+    configs:
+      params:
+        server.insecure: true
+        server.disable.auth: true
+      cm:
         kustomize.buildOptions: --enable-helm
 ---
 apiVersion: argoproj.io/v1alpha1
