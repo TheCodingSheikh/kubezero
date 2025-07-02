@@ -24,7 +24,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: virtual-management-infrastructure
+  project: virtual-management
   source:
     repoURL: https://github.com/thecodingsheikh/kubezero
     path: registry/virtual-management/infrastructure
