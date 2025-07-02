@@ -4,18 +4,15 @@ kind: HelmChartInflationGenerator
 metadata:
   name: argo-cd
 name: argo-cd
-repo: oci://registry-1.docker.io/bitnamicharts
-version: 9.0.0
+repo: https://argoproj.github.io/argo-helm
+version: 7.8.28
 releaseName: argo-cd
 namespace: argo-cd
 IncludeCRDs: true
 valuesInline:
-  server:
-    insecure: true
-    extraArgs:
-      - --disable-auth
-    ingress:
-      enabled: true
-      hostname: 'gitops.local.kubezero.io'
-    config:
+  configs:
+    params:
+      server.insecure: true
+      server.disable.auth: true
+    cm:
       kustomize.buildOptions: --enable-helm
