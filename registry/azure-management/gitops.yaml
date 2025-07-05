@@ -2,9 +2,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: virtual-management
+  name: azure-management
 spec:
-  description: Management GKE cluster resources
+  description: Management EKS cluster resources
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
@@ -17,17 +17,17 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: virtual-management-infrastructure
+  name: azure-management
   annotations:
     argocd.argoproj.io/sync-wave: '100'
-    argocd.argoproj.io/depends-on: vcluster
+    argocd.argoproj.io/depends-on: azure-provider
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: virtual-management-infrastructure
+  project: azure-management-infrastructure
   source:
     repoURL: https://github.com/thecodingsheikh/kubezero
-    path: registry/virtual-management/infrastructure
+    path: registry/azure-management/infrastructure
     targetRevision: main
   destination:
     name: in-cluster
@@ -41,21 +41,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: virtual-management-applications
+  name: azure-management-applications
   annotations:
     argocd.argoproj.io/sync-wave: '100'
-    argocd.argoproj.io/depends-on: vcluster
+    argocd.argoproj.io/depends-on: azure-provider
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: virtual-management
+  project: azure-management
   source:
     repoURL: https://github.com/thecodingsheikh/kubezero
-    path: registry/virtual-management/applications
+    path: registry/azure-management/applications
     targetRevision: main
   destination:
     # NOTE: Change the name according to your cluster.
-    name: virtual-management
+    name: azure-management
   syncPolicy:
     automated:
       prune: true
