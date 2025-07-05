@@ -24,7 +24,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: azure-management-infrastructure
+  project: azure-management
   source:
     repoURL: https://github.com/thecodingsheikh/kubezero
     path: registry/azure-management/infrastructure

@@ -24,7 +24,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: azure-worker-infrastructure
+  project: azure-worker
   source:
     repoURL: https://github.com/thecodingsheikh/kubezero
     path: registry/azure-worker/infrastructure

@@ -8,12 +8,8 @@ resources:
   - ../../../modules/azure/aks/provider
   - ../../../stacks/aks-cluster
 
-# patches:
-#   - path: patch-xeks.yaml
-#     target:
-#       kind: XEKS
-#       name: aws-eks
-#   - path: patch-xnetwork.yaml
-#     target:
-#       kind: XNetwork
-#       name: aws-network
+patches:
+  - path: patch-xaks.yaml
+    target:
+      kind: XAKS
+      name: azure-aks

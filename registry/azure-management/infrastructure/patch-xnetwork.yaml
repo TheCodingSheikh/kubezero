@@ -1,8 +1,0 @@
----
-apiVersion: aws.platform.upbound.io/v1alpha1
-kind: XNetwork
-metadata:
-  name: aws-network
-spec:
-  parameters:
-    providerConfigName: management-provider-aws

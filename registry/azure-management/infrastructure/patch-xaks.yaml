@@ -4,7 +4,7 @@ kind: XAKS
 metadata:
   name: azure-aks
 spec:
-  providerConfigName: worker-provider-azure
+  providerConfigName: management-provider-azure
   writeConnectionSecretToRef:
-    name: worker-azure-aks-kubeconfig
+    name: management-azure-aks-kubeconfig
     namespace: crossplane-system
